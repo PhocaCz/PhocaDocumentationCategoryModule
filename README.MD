@@ -1,0 +1,1 @@
+Phoca Documentation Category Module is Joomla! CMS extension. Module which displays categories of documents in module position.
