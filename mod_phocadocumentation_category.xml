@@ -2,16 +2,15 @@
 <extension type="module" client="site" method="upgrade" version="3">
 	<name>Phoca Documentation Category</name>
 	<author>Jan Pavelka (www.phoca.cz)</author>
-	<creationDate>15/11/2013</creationDate>
+	<creationDate>02/07/2017</creationDate>
 	<authorEmail></authorEmail>
 	<authorUrl>www.phoca.cz</authorUrl>
 	<copyright>Jan Pavelka</copyright>
 	<license>GNU/GPL</license>
-	<version>3.0.0</version>
+	<version>3.0.2</version>
 	<description>MOD_PHOCADOCUMENTATION_CATEGORY_DESCRIPTION</description>
 
 	<files>
-		<folder>assets</folder>
 		<folder>language</folder>
 		<folder>tmpl</folder>
 		<filename module="mod_phocadocumentation_category">mod_phocadocumentation_category.php</filename>
@@ -39,6 +38,10 @@
 	<option value="2">MOD_PHOCADOCUMENTATION_YES_EXCEPT_UNCATEGORISED</option>
 </field>
 	
+				<field name="display_article_list" type="list" default="0" label="MOD_PHOCADOCUMENTATION_CATEGORY_FIELD_DISPLAY_ARTICLE_LIST_LABEL" description="MOD_PHOCADOCUMENTATION_CATEGORY_FIELD_DISPLAY_ARTICLE_LIST_DESC">
+	<option value="0">MOD_PHOCADOCUMENTATION_CATEGORY_NO</option>
+	<option value="1">MOD_PHOCADOCUMENTATION_CATEGORY_YES</option>
+</field>
 				
 			</fieldset>
 			
@@ -64,4 +67,8 @@ description="COM_MODULES_FIELD_CACHING_DESC">
 			</fieldset>
 		</fields>
 	</config>
+	
+	<updateservers>
+		<server type="extension" priority="1" name="updates"><![CDATA[https://raw.githubusercontent.com/PhocaCz/PhocaDocumentationCategoryModule/master/manifest.xml]]></server>
+	</updateservers>
 </extension>
