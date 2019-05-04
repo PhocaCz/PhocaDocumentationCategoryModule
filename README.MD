@@ -16,7 +16,7 @@ Phoca Documentation Category Module is a Joomla! module which displays parent ca
 
 [Phoca Documentation Category Module](https://www.phoca.cz/phoca-documentation-category-module)
 
-[Phoca Documentation Info Page](https://www.phoca.cz/project/phocadocumentation-joomla-download)
+[Phoca Documentation Info Page](https://www.phoca.cz/project/phocadocumentation-joomla-documentation)
 
 
 
