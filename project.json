@@ -1,0 +1,18 @@
+{
+	"author": "Jan Pavelka (www.phoca.cz)",
+	"authorUrl": "https://www.phoca.cz",
+	"copyright": "Jan Pavelka",
+	"license": "GNU/GPL",
+	"projectName": "PhocaDocumentationCategoryModule",
+	"extensionName": "Phoca Documentation Category Module",
+	"projectInitials" : "PD",
+	"description": "Phoca Documentation Category Module is a Joomla! module which displays parent categories of Phoca Documentation component.",
+	"projectUrl": "https://www.phoca.cz/phoca-documentation-category-module",
+	"projectDocumentationUrl": "https://www.phoca.cz/documentation/category/110-phoca-documentation-category-module",
+	"projectMainComponent": "Phoca Documentation",
+	"projectMainComponentInfoUrl": "https://www.phoca.cz/project/phocadocumentation-joomla-download",
+	"projectDemo" : {
+		"Joomla! 3 Demo": "https://www.phoca.cz/documentation"
+	},
+	"projectColor": "#0099ff"
+}

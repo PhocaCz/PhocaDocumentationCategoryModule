@@ -1,74 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="module" client="site" method="upgrade" version="3">
-	<name>Phoca Documentation Category</name>
+	<name>mod_phocadocumentation_category</name>
 	<author>Jan Pavelka (www.phoca.cz)</author>
-	<creationDate>02/07/2017</creationDate>
+	<creationDate>04/05/2019</creationDate>
 	<authorEmail></authorEmail>
-	<authorUrl>www.phoca.cz</authorUrl>
+	<authorUrl>https://www.phoca.cz</authorUrl>
 	<copyright>Jan Pavelka</copyright>
 	<license>GNU/GPL</license>
-	<version>3.0.2</version>
+	<version>3.0.3</version>
 	<description>MOD_PHOCADOCUMENTATION_CATEGORY_DESCRIPTION</description>
+	<projectName>PhocaDocumentationCategoryModule</projectName>
 
 	<files>
-		<folder>language</folder>
 		<folder>tmpl</folder>
+		<filename module="mod_phocadocumentation_category">index.html</filename>
 		<filename module="mod_phocadocumentation_category">mod_phocadocumentation_category.php</filename>
-		<filename>index.html</filename>
 	</files>
+
 	<languages>
 		<language tag="en-GB">language/en-GB/en-GB.mod_phocadocumentation_category.ini</language>
 		<language tag="en-GB">language/en-GB/en-GB.mod_phocadocumentation_category.sys.ini</language>
 	</languages>
-
-
-
+	
 	<config>
 		<fields name="params">
 			<fieldset name="basic">
-		
-				
-				<field name="display_categories" default="" size="10" type="text" label="MOD_PHOCADOCUMENTATION_CATEGORY_DISPLAY_CATEGORIES_LABEL" description="MOD_PHOCADOCUMENTATION_CATEGORY_DISPLAY_CATEGORIES_DESC" />
-		
-				<field name="hide_categories" default="" size="10" type="text" label="MOD_PHOCADOCUMENTATION_CATEGORY_HIDE_CATEGORIES_LABEL" description="MOD_PHOCADOCUMENTATION_CATEGORY_HIDE_CATEGORIES_DESC" />
-				
+
+
+				<field name="display_categories" default="" size="10" type="text" label="MOD_PHOCADOCUMENTATION_CATEGORY_DISPLAY_CATEGORIES_LABEL" description="MOD_PHOCADOCUMENTATION_CATEGORY_DISPLAY_CATEGORIES_DESC"/>
+
+				<field name="hide_categories" default="" size="10" type="text" label="MOD_PHOCADOCUMENTATION_CATEGORY_HIDE_CATEGORIES_LABEL" description="MOD_PHOCADOCUMENTATION_CATEGORY_HIDE_CATEGORIES_DESC"/>
+
 				<field name="display_empty_categories" type="list" default="0" label="MOD_PHOCADOCUMENTATION_CATEGORY_FIELD_DISPLAY_EMPTY_CATEGORIES_LABEL" description="MOD_PHOCADOCUMENTATION_CATEGORY_FIELD_DISPLAY_EMPTY_CATEGORIES_DESC">
 	<option value="0">MOD_PHOCADOCUMENTATION_CATEGORY_NO</option>
 	<option value="1">MOD_PHOCADOCUMENTATION_CATEGORY_YES</option>
 	<option value="2">MOD_PHOCADOCUMENTATION_YES_EXCEPT_UNCATEGORISED</option>
 </field>
-	
+
 				<field name="display_article_list" type="list" default="0" label="MOD_PHOCADOCUMENTATION_CATEGORY_FIELD_DISPLAY_ARTICLE_LIST_LABEL" description="MOD_PHOCADOCUMENTATION_CATEGORY_FIELD_DISPLAY_ARTICLE_LIST_DESC">
 	<option value="0">MOD_PHOCADOCUMENTATION_CATEGORY_NO</option>
 	<option value="1">MOD_PHOCADOCUMENTATION_CATEGORY_YES</option>
 </field>
-				
+
 			</fieldset>
-			
+
 			<fieldset name="advanced">
-		
-<field
-name="moduleclass_sfx"
-type="text"
-label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
-description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
-				
-<field
-name="cache"
-type="list"
-default="0"
-label="COM_MODULES_FIELD_CACHING_LABEL"
-description="COM_MODULES_FIELD_CACHING_DESC">
-<option
-	value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+
+<field name="moduleclass_sfx" type="text" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC"/>
+
+<field name="cache" type="list" default="0" label="COM_MODULES_FIELD_CACHING_LABEL" description="COM_MODULES_FIELD_CACHING_DESC">
+<option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
 </field>
 
-		
+
 			</fieldset>
 		</fields>
 	</config>
-	
+
 	<updateservers>
-		<server type="extension" priority="1" name="updates"><![CDATA[https://raw.githubusercontent.com/PhocaCz/PhocaDocumentationCategoryModule/master/manifest.xml]]></server>
+		<server type="extension" name="MOD_PHOCADOCUMENTATION_CATEGORY" priority="1"><![CDATA[https://raw.githubusercontent.com/PhocaCz/PhocaDocumentationCategoryModule/master/manifest.xml]]></server>
 	</updateservers>
 </extension>
