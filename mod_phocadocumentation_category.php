@@ -18,9 +18,11 @@ if (!JComponentHelper::isEnabled('com_phocadocumentation', true)) {
 if (!class_exists('PhocaDocumentationHelperRoute')) {
     require_once(JPATH_SITE . '/components/com_phocadocumentation/helpers/route.php');
 }
+if (!class_exists('PhocaDocumentationHelperFront')) {
+    require_once(JPATH_SITE . '/components/com_phocadocumentation/helpers/phocadocumentation.php');
+}
 
-$component 				= 'com_phocadocumentation';
-$pC	 					= JComponentHelper::getParams($component);
+$pC	 					= JComponentHelper::getParams('com_phocadocumentation');
 $css					= $pC->get( 'theme', 'phocadocumentation-grey' );
 
 $app = JFactory::getApplication();
@@ -48,6 +50,9 @@ if ($option == 'com_content' && $view == 'article' && $display_article_list == 1
 
     if ($catid > 0) {
 
+        $ordering				= $pC->get( 'article_ordering', 1 );
+        $articleOrdering 		= PhocaDocumentationHelperFront::getOrderingText($ordering);
+
         $wheres[] = " a.state = 1";
         $wheres[] = " c.published = 1";
         $wheres[] = " a.catid = " . (int)$catid;
@@ -55,8 +60,9 @@ if ($option == 'com_content' && $view == 'article' && $display_article_list == 1
             . " FROM #__content AS a"
             . " LEFT JOIN #__categories AS c ON a.catid = c.id"
             . " WHERE " . implode(" AND ", $wheres)
-            . " GROUP BY a.id"
-            . " ORDER BY a.id";
+            . " GROUP BY a.id, a.alias, a.title, c.id, c.alias"
+            . " ORDER BY a.".$articleOrdering;
+
         $db->setQuery($query);
         $articles = $db->loadObjectList();
 
