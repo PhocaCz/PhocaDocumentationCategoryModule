@@ -2,7 +2,7 @@
 
 
 
-![Phoca Documentation Category Module](https://github.com/PhocaCz/PhocaDocumentationCategoryModule/blob/master/mod_phocadocumentation_category.png)
+![Phoca Documentation Category Module](https://github.com/PhocaCz/PhocaDocumentationCategoryModule/blob/master/mod_phocadocumentation_category.png?raw=true)
 
 # Phoca Documentation Category Module
 
@@ -23,6 +23,8 @@ Phoca Documentation Category Module is a Joomla! module which displays parent ca
 ## Documentation
 
 [Documentation](https://www.phoca.cz/documentation/category/110-phoca-documentation-category-module)
+
+
 
 
 
@@ -50,9 +52,13 @@ Phoca Documentation Category Module is a Joomla! module which displays parent ca
 
 
 
-## Version
+## Version (Joomla! 3.x)
 
 3.0.3
+
+## Version (Joomla! 4.x)
+
+4.0.0
 
 
 

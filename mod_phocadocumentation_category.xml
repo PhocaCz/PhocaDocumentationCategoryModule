@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension type="module" client="site" method="upgrade" version="3">
+<extension type="module" client="site" method="upgrade" version="4.0">
 	<name>mod_phocadocumentation_category</name>
 	<author>Jan Pavelka (www.phoca.cz)</author>
-	<creationDate>04/05/2019</creationDate>
+	<creationDate>22/12/2022</creationDate>
 	<authorEmail></authorEmail>
 	<authorUrl>https://www.phoca.cz</authorUrl>
 	<copyright>Jan Pavelka</copyright>
 	<license>GNU/GPL</license>
-	<version>3.0.3</version>
+	<version>4.0.0</version>
 	<description>MOD_PHOCADOCUMENTATION_CATEGORY_DESCRIPTION</description>
 	<projectName>PhocaDocumentationCategoryModule</projectName>
 
 	<files>
 		<folder>tmpl</folder>
+		<folder>models</folder>
 		<filename module="mod_phocadocumentation_category">index.html</filename>
-		<filename module="mod_phocadocumentation_category">manifest.xml</filename>
 		<filename module="mod_phocadocumentation_category">mod_phocadocumentation_category.php</filename>
+		<filename module="mod_phocadocumentation_category">manifest.xml</filename>
 	</files>
 
 	<languages>
@@ -24,7 +25,7 @@
 	</languages>
 	
 	<config>
-		<fields name="params">
+		<fields name="params" addfieldpath="/modules/mod_phocadocumentation_category/models/fields">
 			<fieldset name="basic">
 
 
@@ -42,6 +43,13 @@
 	<option value="0">MOD_PHOCADOCUMENTATION_CATEGORY_NO</option>
 	<option value="1">MOD_PHOCADOCUMENTATION_CATEGORY_YES</option>
 </field>
+
+
+				<field name="phocahead1" type="phocahead" default="MOD_PHOCADOCUMENTATION_CATEGORY_FIELD_TEMPLATE_OVERRIDE_OPTIONS_LABEL" label="" description=""/>
+
+
+				<field name="tmpl_hide_categories" default="" size="10" type="text" label="MOD_PHOCADOCUMENTATION_CATEGORY_HIDE_CATEGORIES_TEMPLATE_OVERRIDE_LABEL" description="MOD_PHOCADOCUMENTATION_CATEGORY_HIDE_CATEGORIES_TEMPLATE_OVERRIDE_DESC"/>
+
 
 			</fieldset>
 

@@ -8,74 +8,54 @@
  */
 
 
+use Joomla\CMS\Factory;
+use Joomla\CMS\HTML\HTMLHelper;
+
 defined('_JEXEC') or die('Restricted access');// no direct access
 
-if (!JComponentHelper::isEnabled('com_phocadocumentation', true)) {
-    echo '<div class="alert alert-danger">Phoca Documentation Error: Phoca Documentation component is not installed or not published on your system</div>';
-    return;
-}
-
-if (!class_exists('PhocaDocumentationHelperRoute')) {
-    require_once(JPATH_SITE . '/components/com_phocadocumentation/helpers/route.php');
-}
-if (!class_exists('PhocaDocumentationHelperFront')) {
-    require_once(JPATH_SITE . '/components/com_phocadocumentation/helpers/phocadocumentation.php');
-}
-
-$pC	 					= JComponentHelper::getParams('com_phocadocumentation');
-$css					= $pC->get( 'theme', 'phocadocumentation-grey' );
-
-$app = JFactory::getApplication();
-//$params 	= $app->getParams();
-$user = JFactory::getUser();
-$db = JFactory::getDBO();
+$app        = Factory::getApplication();
+$document   = $app->getDocument();
+$user       = Factory::getUser();
+$db         = Factory::getDBO();
 $userLevels = implode(',', $user->getAuthorisedViewLevels());
-$menu = $app->getMenu();
-JHTML::stylesheet('media/com_phocadocumentation/css/'.$css.'.css' );
+$menu       = $app->getMenu();
 
-$option = $app->input->get('option');
-$view = $app->input->get('view');
-$id = $app->input->get('id', 0);
-$catid = $app->input->get('catid', 0);
+$pdoc       = new stdClass();
+$pdoc->svg_path = HTMLHelper::image('com_phocadocumentation/svg-definitions.svg', '', [], true, 1);
+$wa         = $document->getWebAssetManager();
+$wa->registerAndUseStyle('com_phocadocumentation.main', 'media/com_phocadocumentation/css/main.css', array('version' => 'auto'));
 
-$display_categories = $params->get('display_categories', '');
-$hide_categories = $params->get('hide_categories', '');
-$display_empty_categories = $params->get('display_empty_categories', 0);
-$display_article_list = $params->get('display_article_list', 0);
+$option     = $app->input->get('option');
+$view       = $app->input->get('view');
+$id         = $app->input->get('id', 0);
+$catid      = $app->input->get('catid', 0);
 
-$wheres = array();
+$display_categories         = $params->get('display_categories', '');
+$hide_categories            = $params->get('hide_categories', '');
+$display_empty_categories   = $params->get('display_empty_categories', 0);
+$display_article_list       = $params->get('display_article_list', 0);
+$moduleclass_sfx 			= htmlspecialchars((string)$params->get('moduleclass_sfx'), ENT_COMPAT, 'UTF-8');
 
+$wheres     = [];
+$articles   = [];
+$categories = [];
 
 if ($option == 'com_content' && $view == 'article' && $display_article_list == 1) {
 
     if ($catid > 0) {
 
-        $ordering				= $pC->get( 'article_ordering', 1 );
-        $articleOrdering 		= PhocaDocumentationHelperFront::getOrderingText($ordering);
-
         $wheres[] = " a.state = 1";
         $wheres[] = " c.published = 1";
         $wheres[] = " a.catid = " . (int)$catid;
-        $query = " SELECT a.id, a.alias, a.title, c.id as categoryid, c.alias as categoryalias"
+        $query = " SELECT a.id, a.alias, a.title, c.id as categoryid, c.alias as categoryalias, a.language as language"
             . " FROM #__content AS a"
             . " LEFT JOIN #__categories AS c ON a.catid = c.id"
             . " WHERE " . implode(" AND ", $wheres)
             . " GROUP BY a.id, a.alias, a.title, c.id, c.alias"
-            . " ORDER BY a.".$articleOrdering;
+            . " ORDER BY a.ordering ASC";
 
         $db->setQuery($query);
         $articles = $db->loadObjectList();
-
-
-        $output = '<div id="ph-pmod-box-module">';
-        if (!empty($articles)) {
-            foreach ($articles as $value) {
-                $output .= '<div class="ph-document"><span class="glyphicon glyphicon-book"></span> ';
-                $output .= '<a href="' . JRoute::_(PhocaDocumentationHelperRoute::getArticleRoute($value->id, $value->alias, $value->categoryid, $value->categoryalias)) . '">' . $value->title . '</a></div>';
-                //$output .= ' <small>('.$value->numcat.')</small></p>';
-            }
-        }
-        $output .= '</div>';
 
     }
 
@@ -105,7 +85,7 @@ if ($option == 'com_content' && $view == 'article' && $display_article_list == 1
 
     $categoriesOrdering = 'lft';
 
-    $query = " SELECT cc.id, cc.id AS id, cc.title, cc.description, cc.alias, cc.access"
+    $query = " SELECT cc.id, cc.id AS id, cc.title, cc.description, cc.alias, cc.access, cc.language"
         . " FROM #__categories AS cc"
         //. " LEFT JOIN #__content AS c ON c.catid = cc.id"
         . " WHERE " . implode(" AND ", $wheres)
@@ -114,27 +94,8 @@ if ($option == 'com_content' && $view == 'article' && $display_article_list == 1
 
     $db->setQuery($query);
     $categories = $db->loadObjectList();
-
-    // ITEMID
-    $itemCategory = $menu->getItems('link', 'index.php?option=com_phocadocumentation&view=categories');
-
-    if (isset($itemCategory[0])) {
-        $itemId = $itemCategory[0]->id;
-    } else {
-        $itemId = $app->input->get('Itemid', 1, 'int');
-    }
-
-    $output = '<div id="ph-pmod-box-module">';
-    if (!empty($categories)) {
-        foreach ($categories as $value) {
-            $output .= '<div class="ph-category"><span class="glyphicon glyphicon-folder-close"></span> ';
-            $output .= '<a href="' . JRoute::_('index.php?option=com_phocadocumentation&view=category&id=' . $value->id . ':' . $value->alias . '&Itemid=' . (int)$itemId) . '">' . $value->title . '</a></div>';
-            //$output .= ' <small>('.$value->numcat.')</small></p>';
-        }
-    }
-    $output .= '</div>';
-
 }
 
 require(JModuleHelper::getLayoutPath('mod_phocadocumentation_category'));
+
 ?>
