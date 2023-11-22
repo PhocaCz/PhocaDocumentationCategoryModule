@@ -1,3 +1,4 @@
+<?xml version="1.0" ?>
 <updates>
 	<update>
 		<name><![CDATA[ Phoca Documentation Category Module ]]></name>
@@ -34,7 +35,27 @@
 		<maintainer><![CDATA[ Phoca.cz ]]></maintainer>
 		<maintainerurl>https://www.phoca.cz/</maintainerurl>
 		<section>Updates</section>
-		<targetplatform name="joomla" version="4.[012]"/>
+		<targetplatform name="joomla" version="4\.*"/>
+		<client>site</client>
+	</update>
+	<update>
+		<name><![CDATA[ Phoca Documentation Category Module ]]></name>
+		<description><![CDATA[ Phoca Documentation Category Module is a Joomla! module which displays parent categories of Phoca Documentation component. ]]></description>
+		<element>mod_phocadocumentation_category</element>
+		<type>module</type>
+		<version>5.0.0</version>
+		<infourl title="Phoca Documentation Category Module 5.0.0">https://www.phoca.cz/</infourl>
+		<downloads>
+			<downloadurl type="full" format="zip">https://github.com/PhocaCz/PhocaDocumentationCategoryModule/releases/download/5.0.0/mod_phocadocumentation_category_v5.0.0.zip</downloadurl>
+		</downloads>
+		<sha512>04e292976a9e9f93e678db470322036201c13fa541726e5d2a730e011ae1eae7a795baf91f2e408765dcc4581292272be6c5809a7b37ec92e169576ff0d70168</sha512>
+		<tags>
+			<tag>stable</tag>
+		</tags>
+		<maintainer><![CDATA[ Phoca.cz ]]></maintainer>
+		<maintainerurl>https://www.phoca.cz/</maintainerurl>
+		<section>Updates</section>
+		<targetplatform name="joomla" version="(4|5)\.*"/>
 		<client>site</client>
 	</update>
 </updates>

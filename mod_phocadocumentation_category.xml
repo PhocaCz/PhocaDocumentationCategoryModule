@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension type="module" client="site" method="upgrade" version="4.0">
+<extension type="module" client="site" method="upgrade" version="5.0">
 	<name>mod_phocadocumentation_category</name>
 	<author>Jan Pavelka (www.phoca.cz)</author>
-	<creationDate>22/12/2022</creationDate>
+	<creationDate>22/11/2023</creationDate>
 	<authorEmail></authorEmail>
 	<authorUrl>https://www.phoca.cz</authorUrl>
 	<copyright>Jan Pavelka</copyright>
 	<license>GNU/GPL</license>
-	<version>4.0.0</version>
+	<version>5.0.0</version>
 	<description>MOD_PHOCADOCUMENTATION_CATEGORY_DESCRIPTION</description>
 	<projectName>PhocaDocumentationCategoryModule</projectName>
 

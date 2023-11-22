@@ -9,6 +9,7 @@
 
 
 use Joomla\CMS\Factory;
+use Joomla\CMS\Helper\ModuleHelper;
 use Joomla\CMS\HTML\HTMLHelper;
 
 defined('_JEXEC') or die('Restricted access');// no direct access
@@ -96,6 +97,6 @@ if ($option == 'com_content' && $view == 'article' && $display_article_list == 1
     $categories = $db->loadObjectList();
 }
 
-require(JModuleHelper::getLayoutPath('mod_phocadocumentation_category'));
+require(ModuleHelper::getLayoutPath('mod_phocadocumentation_category'));
 
 ?>
