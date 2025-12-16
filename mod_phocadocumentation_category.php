@@ -26,10 +26,10 @@ $pdoc->svg_path = HTMLHelper::image('com_phocadocumentation/svg-definitions.svg'
 $wa         = $document->getWebAssetManager();
 $wa->registerAndUseStyle('com_phocadocumentation.main', 'media/com_phocadocumentation/css/main.css', array('version' => 'auto'));
 
-$option     = $app->input->get('option');
-$view       = $app->input->get('view');
-$id         = $app->input->get('id', 0);
-$catid      = $app->input->get('catid', 0);
+$option     = $app->getInput()->get('option');
+$view       = $app->getInput()->get('view');
+$id         = $app->getInput()->get('id', 0);
+$catid      = $app->getInput()->get('catid', 0);
 
 $display_categories         = $params->get('display_categories', '');
 $hide_categories            = $params->get('hide_categories', '');
